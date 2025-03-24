@@ -7,3 +7,5 @@ DATABASE_URL = env.str(
     "DATABASE_URL",
     default="postgresql+asyncpg://postgres:postgres@localhost:5432/postgres",
 )
+URL_PREFIX = "/api/v1"
+
