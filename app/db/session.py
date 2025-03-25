@@ -6,9 +6,7 @@ from settings import DATABASE_URL
 
 engine = create_async_engine(
     DATABASE_URL,
-    future=True,
     echo=True,
-    execution_options={"isolation_level": "AUTOCOMMIT"},
 )
 async_session = async_sessionmaker(engine, expire_on_commit=False)
 
@@ -18,5 +16,8 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
     try:
         session: AsyncSession = async_session()
         yield session
+    except Exception as e:
+        await session.rollback()
+        raise e
     finally:
         await session.close()

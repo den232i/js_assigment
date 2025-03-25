@@ -18,10 +18,6 @@ class Wallet(BaseModel):
     update_time: datetime
 
 
-class Operation(BaseModel):
-    id: int
-    type: OperationType
+class WalletOperation(BaseModel):
+    operation_type: OperationType
     amount: int
-
-    to_wallet_id: Wallet.id
-    create_time: datetime
