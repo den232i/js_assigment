@@ -1,12 +1,9 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, UUID, Integer, ForeignKey, func
-from sqlalchemy.dialects.postgresql import ENUM as PgEnum
-from sqlalchemy.orm import mapped_column
+from sqlalchemy import Column, DateTime, UUID, Integer, func
 
 from db.base_model import Base
-from schemas.wallet import OperationType
 
 
 class WalletDB(Base):
@@ -17,17 +14,3 @@ class WalletDB(Base):
 
     create_time = Column(DateTime, server_default=func.now())
     update_time = Column(DateTime, default=datetime.now(), onupdate=datetime.now())
-
-
-class OperationDB(Base):
-    __tablename__ = 'operation'
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    type = Column(PgEnum(OperationType), nullable=False)
-    amount = Column(Integer, nullable=False)
-
-    to_wallet_id = mapped_column(ForeignKey('wallet.id'), nullable=True)
-
-    create_time = Column(DateTime, server_default=func.now())
-
-
