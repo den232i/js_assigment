@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.router import wallets
+from app.api.router import wallets
 
 api_router = APIRouter()
 

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from api.endpoints import api_router
-from settings import URL_PREFIX
+from app.api.endpoints import api_router
+from app.settings import URL_PREFIX
 
 app = FastAPI(title="js-assigment")
 

@@ -4,9 +4,9 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from db.models import WalletDB
-from db.session import get_db
-from schemas.wallet import WalletOperation, OperationType
+from app.db.models import WalletDB
+from app.db.session import get_db
+from app.schemas.wallet import WalletOperation, OperationType
 
 router = APIRouter()
 

@@ -3,7 +3,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, UUID, Integer, func
 
-from db.base_model import Base
+from app.db.base_model import Base
 
 
 class WalletDB(Base):
